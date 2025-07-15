@@ -1,0 +1,10 @@
+{
+  "homepage": {
+    "restaurantName": "BASILICO",
+    "welcomeMessage": "Wir haben einen Tisch für Sie",
+    "makeReservation": "Reservierung vornehmen"
+  },
+  "reservation": "Reservierung",
+  "language": "Sprache",
+  "Home": "Home"
+}
