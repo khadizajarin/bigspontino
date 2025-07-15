@@ -7,7 +7,7 @@ const blocks = [
   { title: 'Bar', image: '/images/bar.jpg' },
 ];
 
-export default function MenuBlocks() {
+export default function Menu() {
   return (
     <section className="py-12 bg-white text-black">
       <h2 className="text-center text-3xl font-serif mb-6 uppercase">A Tavola</h2>

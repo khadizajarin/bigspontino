@@ -1,4 +1,4 @@
-export default function EventsPage() {
+export default function Events() {
   return (
     <main className="bg-white text-black px-6 py-12 max-w-3xl mx-auto">
       <h1 className="text-3xl font-serif uppercase mb-6 text-center">Eventi</h1>
