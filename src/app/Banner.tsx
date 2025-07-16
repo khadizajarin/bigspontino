@@ -1,12 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { Menu, X,  Logs} from 'lucide-react';
 import { Icon } from '@iconify/react';
 import { Playfair_Display, Space_Grotesk } from 'next/font/google';
 import { Pacifico } from 'next/font/google';
 import Button from '../commonComponents/Button';
+import ReservationModal from '../components/ReservationModal';
 
 const pacifico = Pacifico({
   weight: '400',
@@ -29,6 +30,17 @@ const grotesk = Space_Grotesk({
 
 export default function Banner() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    const hasVisited = sessionStorage.getItem('true');
+
+    if (!hasVisited) {
+      setShowModal(true); // Show modal
+      sessionStorage.setItem('hasVisited', 'true'); // Mark as visited
+    }
+  }, []);
 
   return (
     <div className="relative h-screen w-full text-white overflow-hidden">
@@ -177,6 +189,8 @@ export default function Banner() {
 
         
       </div>
+
+        <ReservationModal isOpen={showModal} onClose={() => setShowModal(false)} />
     </div>
   );
 }

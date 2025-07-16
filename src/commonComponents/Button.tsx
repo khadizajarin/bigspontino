@@ -1,8 +1,9 @@
 import Link from 'next/link';
-import { ReactNode } from 'react';
+import { ReactNode, MouseEvent } from 'react';
 
 interface ButtonProps {
   href: string;
+   onClick?: (e: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void;
   children: ReactNode;
   className?: string;
 }
