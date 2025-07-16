@@ -1,5 +1,9 @@
 'use client';
 
+import { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 const blocks = [
   { title: 'Brunch', image: '/images/brunch.png' },
   { title: 'Lunch', image: '/images/lunch.png' },
@@ -8,24 +12,36 @@ const blocks = [
 ];
 
 export default function Menu() {
+  useEffect(() => {
+    AOS.init({ duration: 800, once: true });
+  }, []);
+
   return (
-    <section className="py-12 bg-white text-black">
+    <section className="py-12 bg-[#ffece3] text-black">
       <h2 className="text-center text-3xl font-serif mb-6 uppercase">A Tavola</h2>
+
       <p className="max-w-4xl mx-auto text-sm text-center mb-10">
-        {/* Add English or German menu description here */}
-        The menu at Big Spuntino is a warm tribute to Italy’s culinary heritage. From insalata, caprese and octopus to the crispiest foccacia, our menu offers an exquisite selection of classic spuntini (\*ital. “snacks”). Of course, this also applies to the dolci: from the traditional crème the mascarpone to the fluffy light maritozzi, the Big Spuntino sweetens everyday life with the churros all italiana – Neapolitan doughnut sticks, served warm and perfect for dipping in melted chocolate with special toppings.
-        <br />
-        <br />
-        In addition to the culinary experience, classic Italian cosmopolitan cocktails and wines from North and South can be tasted. The essence of an Italian summer is brought to life with a sparkling spritz, while the special aromas of our signature cocktail Spuntino 75 are the perfect prelude to an indulgent evening.
+        The menu at Big Spuntino is a warm tribute to Italy’s culinary heritage...
       </p>
+
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 max-w-6xl mx-auto px-4">
-        {blocks.map((block) => (
-          <div key={block.title} className="text-center">
-            <img src={block.image} alt={block.title} className="rounded-lg w-full h-48 object-cover mb-2" />
-            <h3 className="uppercase tracking-wider text-sm"> {block.title} </h3>
+        {blocks.map((block, index) => (
+          <div
+            key={block.title}
+            className="text-center"
+            data-aos="fade-up"
+            data-aos-delay={index * 150}
+          >
+            <img
+              src={block.image}
+              alt={block.title}
+              className="rounded-lg w-full h-48 object-cover mb-2"
+            />
+            <h3 className="uppercase tracking-wider text-sm">{block.title}</h3>
           </div>
         ))}
       </div>
+
       <div className="text-center mt-8">
         <a
           href="/menu.pdf"
